@@ -11,6 +11,17 @@ Claude Code reads this file before every session. Do not deviate from these stan
 - **Styling:** Tailwind CSS + Lucide React icons — no other UI libraries, no custom CSS files
 - **Database:** SQLite via `better-sqlite3` — synchronous queries only, no ORMs, no Prisma
 - **AI layer:** Claude handles unstructured text analysis only. All financial/scoring logic is deterministic code.
+- **Dev server port:** `3333` — set `PORT=3333` in the dev script
+
+## Active Skills
+
+Before writing any code, read and apply these skills:
+
+| Skill | Type | When to apply |
+|-------|------|---------------|
+| `nextjs-sqlite` | Local (`.claude/skills/`) | All DB setup, API routes, next.config.js |
+| `financial_analysis` | Local (`.claude/skills/`) | `/api/analyze` route and any grant scoring logic |
+| `frontend-design` | Built-in Claude Code skill | All React components and UI work |
 
 ---
 

@@ -98,7 +98,7 @@ Skills are Markdown files that tell Claude *how* to approach a specific task. To
 /skill-creator
 ```
 
-Claude will ask clarifying questions, generate the skill file in `.claude/skills/`, and run evaluations to verify it behaves as intended. The `financial_analysis` skill in this repo was created this way.
+Claude will ask clarifying questions, generate the skill file in `.claude/skills/`, and run evaluations to verify it behaves as intended. Both skills in this repo (`financial_analysis` and `nextjs-sqlite`) were created using this process.
 
 ---
 
@@ -137,7 +137,7 @@ Based on our project standards in CLAUDE.md, build the Subventia Oracle MVP.
 Requirements:
 - SQLite database (lib/db.js) with a 'grants' table seeded with 3 sample Dutch government grants. Each grant has: id, name, description, eligibility_criteria, max_amount.
 - A Next.js API route at /api/analyze that accepts POST { proposal: string }, uses the financial_analysis skill to score the proposal against each grant, and returns a ranked JSON array.
-- A professional React dashboard at localhost:3000 where users paste their project proposal and see a ranked list of matching grants with a Match Score (0-100%) and one sentence citing the specific matched criterion.
+- A professional React dashboard at localhost:3333 where users paste their project proposal and see a ranked list of matching grants with a Match Score (0-100%) and one sentence citing the specific matched criterion.
 - Follow the Stachanov Professional design system and architecture defined in CLAUDE.md exactly.
 
 Build the whole thing now.
@@ -154,7 +154,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3333](http://localhost:3333).
 
 ---
 
@@ -178,7 +178,8 @@ stachanov-claude-workshop/
 ├── .claude/
 │   ├── CLAUDE.md                    # Project standards — Claude reads this first
 │   └── skills/
-│       └── financial_analysis.md    # Local skill: grant eligibility scoring
+│       ├── financial_analysis.md    # Local skill: grant eligibility scoring + JSON output format
+│       └── nextjs-sqlite.md         # Local skill: Next.js App Router + better-sqlite3 patterns
 └── README.md                        # This file
 ```
 
