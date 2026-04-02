@@ -14,6 +14,7 @@
 | Grant scoring, `/api/analyze` | `financial_analysis` (local) |
 | Any React component or UI work | `frontend-design` (built-in) |
 | Commits, branches, PRs | `git-workflow` (global) |
+| Architecture → review → planning → review | `architecture`, `review`, `planning` (global) |
 
 ## Design system: Stachanov Professional
 

@@ -70,7 +70,7 @@ This is one of the most powerful — and least understood — features of Claude
 | **Location** | `~/.claude/skills/` | `.claude/skills/` ← this repo |
 | **Scope** | Every project on your machine | Only this project |
 | **Use case** | Workflow gates, architecture, review, git | Domain-specific logic (grant analysis, etc.) |
-| **Examples** | `/architecture`, `/review`, `/git-workflow` | `/financial_analysis`, `/nextjs-sqlite` |
+| **Examples** | `/architecture`, `/review`, `/planning`, `/git-workflow` | `/financial_analysis`, `/nextjs-sqlite` |
 
 The global `git-workflow` skill is already configured and covers branching strategy, commit conventions, PR rules, and release tagging. It activates automatically whenever you mention "commit", "branch", "PR", or "release".
 
