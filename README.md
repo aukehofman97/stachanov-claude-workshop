@@ -69,8 +69,10 @@ This is one of the most powerful — and least understood — features of Claude
 |---|---|---|
 | **Location** | `~/.claude/skills/` | `.claude/skills/` ← this repo |
 | **Scope** | Every project on your machine | Only this project |
-| **Use case** | Workflow gates, architecture, review | Domain-specific logic (grant analysis, etc.) |
-| **Examples** | `/architecture`, `/review`, `/planning` | `/financial_analysis` |
+| **Use case** | Workflow gates, architecture, review, git | Domain-specific logic (grant analysis, etc.) |
+| **Examples** | `/architecture`, `/review`, `/git-workflow` | `/financial_analysis`, `/nextjs-sqlite` |
+
+The global `git-workflow` skill is already configured and covers branching strategy, commit conventions, PR rules, and release tagging. It activates automatically whenever you mention "commit", "branch", "PR", or "release".
 
 ### The Global Workflow — Four Gates
 
@@ -176,11 +178,14 @@ A running Next.js app with:
 ```
 stachanov-claude-workshop/
 ├── .claude/
-│   ├── CLAUDE.md                    # Project standards — Claude reads this first
+│   ├── CLAUDE.md                    # Project-specific standards (stack, design tokens, architecture)
 │   └── skills/
-│       ├── financial_analysis.md    # Local skill: grant eligibility scoring + JSON output format
+│       ├── financial_analysis.md    # Local skill: grant scoring, JSON output contract, citation rules
 │       └── nextjs-sqlite.md         # Local skill: Next.js App Router + better-sqlite3 patterns
+├── .gitignore                       # Next.js + SQLite + Claude workspace exclusions
 └── README.md                        # This file
 ```
+
+> The global `~/.claude/CLAUDE.md` handles engineering workflow (four gates, bug triage, planning). The local `CLAUDE.md` only adds what's project-specific: stack, design tokens, file layout, and which skills to activate.
 
 The app files (`lib/`, `app/`, `components/`) are generated live during the demo.
