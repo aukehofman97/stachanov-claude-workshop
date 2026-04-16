@@ -114,7 +114,7 @@ Claude will ask clarifying questions, generate the skill file in `.claude/skills
 
 - **Next.js 14** (App Router) + Tailwind CSS + Lucide Icons
 - **SQLite** via `better-sqlite3` — 3 sample Dutch government grants
-- **No cloud, no API keys** — runs entirely locally
+- Runs locally — requires an **Anthropic API key** stored in `.env.local`
 - AI is used *only* for unstructured text analysis; all financial logic is deterministic
 
 ---
@@ -137,9 +137,11 @@ Claude Code automatically picks up `.claude/CLAUDE.md` and the skills in `.claud
 Based on our project standards in CLAUDE.md, build the Subventia Oracle MVP.
 
 Requirements:
+- Create a .env.local file at the project root and store the Anthropic API key there as ANTHROPIC_API_KEY. Read it from process.env in the API route.
 - SQLite database (lib/db.js) with a 'grants' table seeded with 3 sample Dutch government grants. Each grant has: id, name, description, eligibility_criteria, max_amount.
 - A Next.js API route at /api/analyze that accepts POST { proposal: string }, uses the financial_analysis skill to score the proposal against each grant, and returns a ranked JSON array.
-- A professional React dashboard at localhost:3333 where users paste their project proposal and see a ranked list of matching grants with a Match Score (0-100%) and one sentence citing the specific matched criterion.
+- A React dashboard at localhost:3333: navy (#003366) header with "Subventia Oracle" title, full-width textarea (8 rows) for the proposal, an "Analyze" button, and a results section below showing one card per grant with: grant name, a colored score bar (green ≥80, amber 40–79, red <40), the numeric score, and one sentence citing the matched criterion. Show a loading spinner on the button while the request is in flight.
+- Use the frontend-design skill for all React components and UI work.
 - Follow the Stachanov Professional design system and architecture defined in CLAUDE.md exactly.
 
 Build the whole thing now.
@@ -170,6 +172,28 @@ A running Next.js app with:
 - Results panel: ranked grant cards showing name, match score, and a one-sentence explanation citing the specific grant criterion
 
 **Total demo time: ~5 minutes.**
+
+---
+
+## Sample Demo Proposal
+
+Paste this into the app during the demo to show a realistic match against the seeded grants:
+
+```
+Organisation: Dataflow Solutions B.V. (SME, 18 employees, Amsterdam)
+
+Project: AI-Assisted Invoice Reconciliation Engine
+
+We are developing a machine learning system that automatically matches incoming invoices against purchase orders and flags discrepancies for human review. The core innovation is a custom transformer model trained on Dutch-language financial documents — existing off-the-shelf OCR tools fail on Dutch accounting terminology and multi-column VAT breakdowns.
+
+The project involves 12 months of software development by 4 FTE developers and 1 FTE data scientist, all employed in the Netherlands. We are building novel software from scratch with no existing open-source equivalent. Total R&D payroll cost: €320,000.
+
+We will apply the system internally first, then license it to mid-market accountancy firms in the Netherlands and Belgium. Expected first commercial release: Q3 2026.
+
+We are seeking co-funding to cover 50% of the R&D payroll cost (€160,000) and have secured a €40,000 commitment from a strategic partner. No physical relocation is required; all work happens at our Amsterdam HQ.
+```
+
+This proposal is designed to score strongly on **WBSO** (NL-based tech staff, novel software development) and reasonably on **MIT Haalbaarheidsproject** (SME + technology innovation), while scoring low on EFRO (no designated region requirement met).
 
 ---
 
