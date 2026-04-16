@@ -144,7 +144,9 @@ Requirements:
 - Use the frontend-design skill for all React components and UI work.
 - Follow the Stachanov Professional design system and architecture defined in CLAUDE.md exactly.
 
-Build the whole thing now.
+Before writing any code, run all four gates in order: /architecture → /review (stop for approval) → /planning → /review (stop for approval). Only start implementation after I approve gate 4.
+
+When the app is working, use the git-workflow skill to commit, push, and open a PR on GitHub.
 ```
 
 ### 3. Four gates — plan before building
