@@ -147,9 +147,19 @@ Requirements:
 Build the whole thing now.
 ```
 
-### 3. Approve the plan
+### 3. Four gates — plan before building
 
-Claude will generate a multi-step plan. Type `y` to approve. Watch it build.
+Before writing a single line of code, the global `~/.claude/CLAUDE.md` enforces four mandatory gates:
+
+```
+Gate 1 → /architecture    Produces tasks/architecture.md — tech choices, file layout, trade-offs
+Gate 2 → /review          STOP. Claude presents findings. You approve or push back.
+Gate 3 → /planning        Produces tasks/todo-YYYY-MM-DD.md — block-structured task breakdown
+Gate 4 → /review          STOP. Claude validates the plan is complete and implementable. You approve.
+                          → Only now does implementation code get written.
+```
+
+These gates are non-negotiable: Claude names any gate it wants to skip and waits for explicit permission. This prevents unreviewed, unmaintainable output — every significant change goes through a structured approval loop defined once, applied everywhere.
 
 ### 4. Run it
 
@@ -159,6 +169,16 @@ npm run dev
 ```
 
 Open [http://localhost:3333](http://localhost:3333).
+
+### 5. Push to GitHub with git-workflow
+
+Once the app is running, use the `git-workflow` skill to commit and push. The skill handles branch naming, commit message conventions, PR creation, and release tagging automatically. Just tell Claude:
+
+```
+Commit and push the Subventia Oracle MVP to GitHub.
+```
+
+Claude will invoke `/git-workflow`, stage the files, write a conventional commit message, create a feature branch, open a PR, and merge it — all without you touching git directly.
 
 ---
 
